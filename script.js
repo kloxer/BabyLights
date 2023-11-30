@@ -184,6 +184,8 @@ async function turnOFFLightAndSwitch() {
 
 async function setColorWithBlink(entityId, color, brightness) {
     try {
+        //set the color first before switching
+        setColor(entityId,color)
         for (let i = 0; i < 3; i++) {
             // Turn off the light
             await toggleLight(entityId, false);
