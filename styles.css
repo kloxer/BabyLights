@@ -1,4 +1,8 @@
-body
-{
-    padding:20px;
+.button-container {
+    padding: 10px;
+}
+
+.btn-custom {
+    width: 100%; /* Makes the button expand to full width */
+    margin-bottom: 10px; /* Adds some space below each button */
 }

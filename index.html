@@ -2,16 +2,41 @@
 <html>
 <head>
     <title>Home Assistant Control</title>
-    <!-- Add any additional CSS or JS links here -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .button-container {
+            padding: 10px;
+        }
 
-    <script src="script.js"></script>
+        .btn-custom {
+            width: 100%; /* Makes the button expand to full width */
+            margin-bottom: 10px; /* Adds some space below each button */
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Baby Control Panel</h1>
-    <button id="turnRed" onclick="setColor('light.controller_rgb_ir_cfdb5f','red')">Baby-cuddles</button>
-    <button id="turnRed" onclick="setColor('light.controller_rgb_ir_cfdb5f','blue')">Baby-sad</button>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center mt-3">Baby Control Panel &#129388;</h1>
+            </div>
+        </div>
+        <div class="row button-container">
+            <div class="col-12">
+                <button id="cuddles" class="btn btn-primary btn-custom" onclick="setColor('light.controller_rgb_ir_cfdb5f','red')">Baby-cuddles</button>
+            </div>
+            <div class="col-12">
+                <button id="sad" class="btn btn-secondary btn-custom" onclick="setColor('light.controller_rgb_ir_cfdb5f','blue')">Baby-sad</button>
+            </div>
+            <div class="col-12">
+                <button id="on" class="btn btn-secondary btn-custom" onclick="setColor('light.controller_rgb_ir_cfdb5f','white')">On</button>
+            </div>
+            <!-- Add more buttons here in the same pattern -->
+        </div>
+    </div>
 
+    <script src="script.js"></script>
 </body>
 </html>
