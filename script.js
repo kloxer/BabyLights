@@ -41,6 +41,7 @@ async function setColor(entityId, color) {
             },
             body: JSON.stringify({
                 entity_id: entityId,
+                brightness: 255, // 100% brightness
                 color_name: color
             })
         });
@@ -55,8 +56,8 @@ async function setColor(entityId, color) {
     }
 }
 
-async function turnOffMain(){
-    entityId= "switch.bedroom_light";
+async function turnOffSwitch(entityId){
+   
     try {
         const url = `${HOME_ASSISTANT_URL}/api/services/switch/turn_off`;
         const response = await fetch(url, {
@@ -78,3 +79,106 @@ async function turnOffMain(){
         console.error(`Error turning off ${entityId}:`, error);
     }
 }
+
+async function turnOnSwitch(entityId){
+   
+    try {
+        const url = `${HOME_ASSISTANT_URL}/api/services/switch/turn_on`;
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${HOME_ASSISTANT_API_KEY}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                entity_id: entityId
+                        })
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log('Turned off '+ entityId);
+    } catch (error) {
+        console.error(`Error turning off ${entityId}:`, error);
+    }
+}
+
+async function turnOnLightAndSwitch() {
+    const lightEntityId = "light.controller_rgb_ir_cfdb5f";
+    const switchEntityId = "switch.bedroom_light";
+
+    try {
+        // Turn on the light with full brightness and white color
+        const lightUrl = `${HOME_ASSISTANT_URL}/api/services/light/turn_on`;
+        await fetch(lightUrl, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${HOME_ASSISTANT_API_KEY}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                entity_id: lightEntityId,
+                brightness: 255, // 100% brightness
+                color_name: "white"
+            })
+        });
+
+        // Turn on the switch
+        const switchUrl = `${HOME_ASSISTANT_URL}/api/services/switch/turn_on`;
+        await fetch(switchUrl, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${HOME_ASSISTANT_API_KEY}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ entity_id: switchEntityId })
+        });
+
+        
+
+        console.log(`Turned on ${lightEntityId} and ${switchEntityId}`);
+    } catch (error) {
+        console.error(`Error in turning on devices:`, error);
+    }
+}
+
+
+async function turnOFFLightAndSwitch() {
+    const lightEntityId = "light.controller_rgb_ir_cfdb5f";
+    const switchEntityId = "switch.bedroom_light";
+
+    try {
+        // Turn on the light with full brightness and white color
+        const lightUrl = `${HOME_ASSISTANT_URL}/api/services/light/turn_off`;
+        await fetch(lightUrl, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${HOME_ASSISTANT_API_KEY}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                entity_id: lightEntityId
+            })
+        });
+
+        // Turn on the switch
+        const switchUrl = `${HOME_ASSISTANT_URL}/api/services/switch/turn_off`;
+        await fetch(switchUrl, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${HOME_ASSISTANT_API_KEY}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ entity_id: switchEntityId })
+        });
+
+        
+
+        console.log(`Turned off ${lightEntityId} and ${switchEntityId}`);
+    } catch (error) {
+        console.error(`Error in turning on devices:`, error);
+    }
+}
+
+

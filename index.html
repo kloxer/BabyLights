@@ -24,6 +24,7 @@
   style="
     background-image: url('./images/bear.png');
     height: 100vh;
+
   "
 >
     <div class="container">
@@ -40,11 +41,19 @@
                 <button id="sad" class="btn btn-secondary btn-custom" onclick="setColor('light.controller_rgb_ir_cfdb5f','blue')">Baby-sad</button>
             </div>
             <div class="col-12">
-                <button id="on" class="btn btn-success btn-custom" onclick="setColor('light.controller_rgb_ir_cfdb5f','white')">On</button>
+                <button id="on" class="btn btn-success btn-custom" onclick="turnOnLightAndSwitch()">Lights On</button>
             </div>
             <div class="col-12">
-                <button id="on" class="btn btn-danger btn-custom" onclick="setColor('light.controller_rgb_ir_cfdb5f','white')">Off</button>
+                <button id="off" class="btn btn-danger btn-custom" onclick="turnOFFLightAndSwitch()">Lights Off</button>
             </div>
+            <div class="col-12">
+                <button id="off" class="btn btn-light btn-custom" onclick="turnOnSwitch('switch.window_fan_socket')">Turn on Fan</button>
+            </div>
+            <div class="col-12">
+                <button id="off" class="btn btn-warning btn-custom" onclick="turnOffSwitch('switch.window_fan_socket')">Turn off Fan</button>
+            </div>
+
+
             <!-- Add more buttons here in the same pattern -->
         </div>
     </div>
