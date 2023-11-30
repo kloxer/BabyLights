@@ -182,3 +182,52 @@ async function turnOFFLightAndSwitch() {
 }
 
 
+async function setColorWithBlink(entityId, color, brightness) {
+    try {
+        for (let i = 0; i < 3; i++) {
+            // Turn off the light
+            await toggleLight(entityId, false);
+            // Wait for a short period
+            await new Promise(resolve => setTimeout(resolve, 1000)); // 1 second delay
+            // Turn on the light
+            await toggleLight(entityId, true);
+            // Wait again
+            await new Promise(resolve => setTimeout(resolve, 1000)); // 1 second delay
+        }
+
+        // Finally, set the light to the desired color and brightness
+        const url = `${HOME_ASSISTANT_URL}/api/services/light/turn_on`;
+        await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${HOME_ASSISTANT_API_KEY}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                entity_id: entityId,
+                brightness: brightness,
+                color_name: color
+            })
+        });
+
+        console.log(`Set ${entityId} to ${color} with brightness ${brightness}`);
+    } catch (error) {
+        console.error(`Error setting color of ${entityId}:`, error);
+    }
+}
+
+async function toggleLight(entityId, turnOn) {
+    const service = turnOn ? 'turn_on' : 'turn_off';
+    const url = `${HOME_ASSISTANT_URL}/api/services/light/${service}`;
+    await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${HOME_ASSISTANT_API_KEY}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ entity_id: entityId })
+    });
+}
+
+// Example usage
+//setColorWithBlink('light.controller_rgb_ir_cfdb5f', 'blue', 255);

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Home Assistant Control</title>
+    <title>Extra buttons</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
 
@@ -20,6 +20,7 @@
 
 <body>
 
+
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -27,21 +28,28 @@
             </div>
         </div>
         <div class="row button-container">
+            
             <div class="col-12">
-                <button id="cuddles" class="btn btn-primary btn-custom" onclick="setColor('light.controller_rgb_ir_cfdb5f','red')">Baby-cuddles</button>
+                <button id="on" class="btn btn-success btn-custom" onclick="turnOnLightAndSwitch()">Lights On</button>
             </div>
             <div class="col-12">
-                <button id="sad" class="btn btn-secondary btn-custom" onclick="setColor('light.controller_rgb_ir_cfdb5f','blue')">Baby-sad</button>
+                <button id="off" class="btn btn-danger btn-custom" onclick="turnOFFLightAndSwitch()">Lights Off</button>
+            </div>
+            <div class="col-12">
+                <button id="off" class="btn btn-light btn-custom" onclick="turnOnSwitch('switch.window_fan_socket')">Turn on Fan</button>
+            </div>
+            <div class="col-12">
+                <button id="off" class="btn btn-warning btn-custom" onclick="turnOffSwitch('switch.window_fan_socket')">Turn off Fan</button>
             </div>
 
 
             <!-- Add more buttons here in the same pattern -->
         </div>
     </div>
+    <img src="./images/dubu.gif" class="rounded mx-auto d-block" alt="Responsive image">
 
     <script src="script.js"></script>
-    <img src="./images/dubu.gif" class="rounded mx-auto d-block" alt="Responsive image">
-    <p><a href="buttons.html" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">More buttons</a></p>    
+    <p><a href="index.html" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Back to homepage</a></p>    
 
 </body>
 </html>
