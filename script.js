@@ -49,7 +49,7 @@ async function setColor(entityId, color) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        turnOffMain();
+        turnOffSwitch("switch.bedroom_light");
         console.log(`Set ${entityId} to ${color}:`, data);
     } catch (error) {
         console.error(`Error setting color of ${entityId}:`, error);
