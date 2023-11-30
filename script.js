@@ -1,7 +1,4 @@
 
-const HOME_ASSISTANT_API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJmZjNhZTRiOTRhMTg0Y2ViYmIzMWNkNDg4N2MzMzlkMSIsImlhdCI6MTcwMTI5Mzc3NiwiZXhwIjoyMDE2NjUzNzc2fQ.tKXrI9PeMTKTAm9Pz3SBYEW1bVfNpKf7XNV12mzw1Co";
-const HOME_ASSISTANT_URL = "https://socaresrpi.duckdns.org:8123";
-console.log(HOME_ASSISTANT_URL);
 
 // async function checkAPI() {
 //     try {
@@ -42,6 +39,8 @@ console.log(HOME_ASSISTANT_URL);
 // }
 
 //listControllableDevices();
+const HOME_ASSISTANT_API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJmZjNhZTRiOTRhMTg0Y2ViYmIzMWNkNDg4N2MzMzlkMSIsImlhdCI6MTcwMTI5Mzc3NiwiZXhwIjoyMDE2NjUzNzc2fQ.tKXrI9PeMTKTAm9Pz3SBYEW1bVfNpKf7XNV12mzw1Co";
+const HOME_ASSISTANT_URL = "https://socaresrpi.duckdns.org:8123";
 
 async function setColor(entityId, color) {
     try {
