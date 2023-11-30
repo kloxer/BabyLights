@@ -3,6 +3,8 @@
 <head>
     <title>Home Assistant Control</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         .button-container {
@@ -17,6 +19,13 @@
 </head>
 
 <body>
+    <div
+
+  style="
+    background-image: url('./images/bear.png');
+    height: 100vh;
+  "
+>
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -31,12 +40,18 @@
                 <button id="sad" class="btn btn-secondary btn-custom" onclick="setColor('light.controller_rgb_ir_cfdb5f','blue')">Baby-sad</button>
             </div>
             <div class="col-12">
-                <button id="on" class="btn btn-secondary btn-custom" onclick="setColor('light.controller_rgb_ir_cfdb5f','white')">On</button>
+                <button id="on" class="btn btn-success btn-custom" onclick="setColor('light.controller_rgb_ir_cfdb5f','white')">On</button>
+            </div>
+            <div class="col-12">
+                <button id="on" class="btn btn-danger btn-custom" onclick="setColor('light.controller_rgb_ir_cfdb5f','white')">Off</button>
             </div>
             <!-- Add more buttons here in the same pattern -->
         </div>
     </div>
+    <img src="./images/dubu.gif" class="rounded mx-auto d-block" alt="Responsive image">
 
     <script src="script.js"></script>
+
+</div>
 </body>
 </html>

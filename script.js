@@ -78,5 +78,3 @@ async function turnOffMain(){
         console.error(`Error turning off ${entityId}:`, error);
     }
 }
-// Example usage
-setColor('light.controller_rgb_ir_cfdb5f', 'blue');
